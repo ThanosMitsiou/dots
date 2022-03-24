@@ -1,0 +1,68 @@
+<application>
+  <component name="ProjectPluginTrackerManager">
+    <trackers>
+      <map>
+        <entry key="1tAffB995tfMfaxMyzfOTQNaixt">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+      </map>
+    </trackers>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DocumentationAutoUpdateEnabled" value="true" />
+    <property name="MarketplacePluginsSearchHistory" value="jira&#10;ji&#10;/sortBy:featured" />
+    <property name="PyCharm.InitialConfiguration" value="true" />
+    <property name="PyCharm.InitialConfiguration.V2" value="true" />
+    <property name="PyCharm.InitialConfiguration.V3" value="true" />
+    <property name="PyCharm.InitialConfiguration.V4" value="true" />
+    <property name="PyCharm.InitialConfiguration.V5" value="true" />
+    <property name="PyCharm.InitialConfiguration.V6" value="true" />
+    <property name="PyCharm.InitialConfiguration.V7" value="true" />
+    <property name="SettingsSearchHistory" value="interpreter" />
+    <property name="ShowDocumentationInToolWindow" value="false" />
+    <property name="appcds.runOnSecondStart" value="PY-212.4746.96-58a34d6b2537c91e1ba3cdc1e714f170ac854c8bd0e27e199e798cc0e8210841" />
+    <property name="evlsprt3.212" value="17" />
+    <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.9/bin/python3.9&#10;/home/nathaniel/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.8/bin/python3.8" />
+    <property name="file.gist.reindex.count" value="11605" />
+    <property name="fileTypeChangedCounter" value="3" />
+    <property name="fileTypeDetectors" value="com.intellij.database.vfs.DbStorageFileType$Detector:com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:com.intellij.javascript.debugger.sourcemap.SourceMapFileType$MyFileTypeDetector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
+    <property name="got.it.tooltip.cwm.invitation.notification" value="1" />
+    <property name="got.it.tooltip.reader.mode.got.it" value="1" />
+    <property name="ide.memory.adjusted" value="true" />
+    <property name="ide.updates.previous.build.number" value="PY-212.4746.96" />
+    <property name="ideavim.statistics.timestamp" value="1648117543637" />
+    <property name="input.method.disabler.muted" value="true" />
+    <property name="lastSeenTip" value="neue-ChangeSorting.html" />
+    <property name="lastTimeTipsWereShown" value="1629481122029" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.9/bin/python3.9" />
+    <property name="log.trace.categories" value="#com.jetbrains.rdserver.requests&#10;#com.jetbrains.rd.ide.document&#10;#com.jetbrains.rdserver.document&#10;#com.jetbrains.rdserver.editors&#10;#com.jetbrains.rdserver.actions&#10;#com.jetbrains.rdserver.permissions" />
+    <property name="quick.doc.font.size.v3" value="SMALL" />
+    <property name="registry.to.advanced.settings.migration.build" value="PY-212.4746.96" />
+    <property name="seenTips" value="neue-NonSuspendingBreakpoints.html,neue-Compare.html,neue-Switcher.html,neue-EditRegExp.html,neue-SelectTasks.html,neue-db_tip_back_up_table.html,neue-ChangeSorting.html" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="4.3.5" />
+  </component>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="$USER_HOME$/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.8/bin/python3.8" value="true" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="$USER_HOME$/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.8/bin/python3.8" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_TRIALTEST">
+      <map>
+        <entry key="$USER_HOME$/.cache/pypoetry/virtualenvs/thesis-wJfCUHWM-py3.8/bin/python3.8" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ToolbarSettingsService">
+    <option name="NEW_TOOLBAR_SETTINGS" value="OLD_NAVBAR" />
+  </component>
+</application>

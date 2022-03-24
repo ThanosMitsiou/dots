@@ -1,0 +1,28 @@
+<application>
+  <component name="ShownTips">
+    <option name="shownTips">
+      <map>
+        <entry key="Close_all_editor_tabs.html" value="1635978683641" />
+        <entry key="Compare.html" value="1632776436363" />
+        <entry key="CompareDataSources.html" value="1632052431852" />
+        <entry key="CopyWithNoSelection.html" value="1633726613386" />
+        <entry key="CtrlD.html" value="1639088179721" />
+        <entry key="Emmet.html" value="1639325411049" />
+        <entry key="ImagesLookup.html" value="1630088635621" />
+        <entry key="IntroduceVariable.html" value="1632265754626" />
+        <entry key="LiveTemplates.html" value="1641753767367" />
+        <entry key="PytestFixtures.html" value="1632679391713" />
+        <entry key="RunTests.html" value="1638910636950" />
+        <entry key="SelectTasks.html" value="1629482198604" />
+        <entry key="SpeedSearchinLiveTemplates.html" value="1629623943669" />
+        <entry key="SurroundWith.html" value="1636903408389" />
+        <entry key="Terminal.html" value="1638658633794" />
+        <entry key="WSLInterpreter.html" value="1636582589151" />
+        <entry key="WildcardsInNavigationPopups.html" value="1635076666117" />
+        <entry key="jump_to_colors_fonts.html" value="1636066015426" />
+        <entry key="local_history.html" value="1632583571104" />
+        <entry key="smart_selection.html" value="1641224710863" />
+      </map>
+    </option>
+  </component>
+</application>

@@ -1,0 +1,17 @@
+00:00:00.542716 VirtualBox GUI VM Selector Window 6.1.18_Pop r142142 linux.amd64 (Mar 22 2021 15:56:49) release log
+00:00:00.542717 Log opened 2021-05-30T14:16:24.468814000Z
+00:00:00.542718 Build Type: release
+00:00:00.542722 OS Product: Linux
+00:00:00.542723 OS Release: 5.11.0-7614-generic
+00:00:00.542724 OS Version: #15~1618626693~20.10~ecb25cd-Ubuntu SMP Thu Apr 22 16:00:45 UTC 
+00:00:00.542746 DMI Product Name: VirtualBox
+00:00:00.542753 DMI Product Version: 1.2
+00:00:00.542762 Firmware type: BIOS
+00:00:00.542800 Host RAM: 10818MB (10.5GB) total, 9028MB (8.8GB) available
+00:00:00.542804 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.542805 Process ID: 22647
+00:00:00.542805 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.542830 Qt version: 5.14.2
+00:00:00.599465 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:01.051998 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 0x27 x 1920x1053
+00:00:01.121589 GUI: UIMediumEnumerator: Medium-enumeration finished!

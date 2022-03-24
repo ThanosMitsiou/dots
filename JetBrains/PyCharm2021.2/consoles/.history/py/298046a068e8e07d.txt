@@ -1,0 +1,406 @@
+import numpy as np
+from random import randint
+from utils import mpi_init, generate_random_ints, DATA_TYPE
+
+ARRAY_SIZE = 5_000_000
+
+
+def array_multiplication_with_element(arr, element):
+    """
+    Return the result of an array multiplied by an element
+    We first broadcast the element to all the processes,
+    split the array to each process, do the multiplication and then gather the results
+    back to the main process
+    """
+    comm, rank, comm_size = mpi_init()
+
+    element = bytearray([element])
+    comm.Bcast(element, root=0)
+
+    recvbuff = np.empty(ARRAY_SIZE//comm_size, dtype=DATA_TYPE)
+    comm.Scatter(arr, recvbuff, root=0)
+
+    print(recvbuff)
+    print(arr, element)
+
+def main():
+    comm, rank, comm_size = mpi_init()
+    arr = None
+    element = None
+
+    if rank == 0:
+
+        element = 5
+        arr = generate_random_ints(ARRAY_SIZE, comm_size)
+
+    array_multiplication_with_element(arr, element)
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import numpy as np
+import sortednp as snp
+from sort.merge_sort import merge_sort
+from utils import mpi_init, generate_random_ints, timer, DATA_TYPE
+
+ARRAY_SIZE = 50_000_000
+
+
+@timer
+def sort_using_buffers(data, recvbuff):
+    """
+    :param data:
+    :return:
+    """
+    comm, rank, comm_size = mpi_init()
+    comm.Scatter(data, recvbuff, root=0)
+    recvbuff = merge_sort(recvbuff)
+
+    middle = comm_size
+    iterations = 1
+
+    while middle > 1:
+        local_array_size = (ARRAY_SIZE//comm_size) * iterations
+        total_size = middle
+
+        if middle % 2 == 0 or middle == 2:
+            middle = middle // 2
+        else:
+            middle = (middle // 2) + 1
+
+        if rank < total_size:
+            if rank >= middle:
+                dest = rank - middle
+                comm.Send(recvbuff, dest=dest)
+            else:
+                source = rank + middle
+                if source < total_size:
+                    temp_data = np.array(local_array_size * [0])
+                    comm.Recv(temp_data, source=source)
+                    recvbuff = snp.merge(recvbuff, temp_data)
+
+        iterations += 1
+
+    return recvbuff
+
+
+def main():
+    """
+    Merge sort implemented using mpi4py
+    The script generates a random array, splits it and sends the every piece of the array
+    on a different process in order to sort it. Then it merges all the sorted sub-arrays on a
+    sorted array
+    """
+
+    comm, rank, comm_size = mpi_init()
+    data = None
+
+    if rank == 0:
+        data = generate_random_ints(ARRAY_SIZE, comm_size)
+
+    recvbuff = np.empty(ARRAY_SIZE//comm_size, dtype=DATA_TYPE)
+    sort_using_buffers(data, recvbuff)
+
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import random
+import sys
+import numpy as np
+
+from mpi4py import MPI
+from search.core import get_number_of_occurrences, ARRAY_SIZE
+from utils import mpi_init, generate_random_ints, timer, DATA_TYPE
+
+
+
+@timer
+def find_occurrences_using_buffers(array, key):
+    """
+    Find how many times the key exists on the array using
+    buffers
+    :param array: They array with the elements
+    :param key: the element that we are looking for
+    :return:
+    """
+
+    comm, rank, comm_size = mpi_init()
+
+    #  We are broadcasting the key to all processes
+    key = bytearray([key])
+    comm.Bcast(key, root=0)
+
+    key = int.from_bytes(key, byteorder=sys.byteorder)
+
+    recvbuff = np.empty(ARRAY_SIZE//comm_size, dtype=DATA_TYPE)
+    comm.Scatter(array, recvbuff, root=0)
+
+    result = get_number_of_occurrences(recvbuff, key)
+
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+
+    return total
+
+@timer
+def find_occurances_using_objects(array, key):
+
+    comm, rank, comm_size = mpi_init()
+
+    key = comm.bcast(key)
+    local_array = comm.scatter(array, root=0)
+
+    result = get_number_of_occurrences(local_array, key)
+
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+
+    return total
+
+
+def main():
+    _, rank, comm_size = mpi_init()
+    array = None
+    key = 0
+
+    parser = argparse.ArgumentParser(description="run merge sort algorithm")
+    parser.add_argument("--data_size", type=int, help="Size of the input")
+    args = parser.parse_args()
+    data_size = args.data_size
+
+    if rank == 0:
+        array = generate_random_ints(ARRAY_SIZE, comm_size)
+        key = random.randint(1, 256)
+
+    find_occurrences_using_buffers(array, key=key)
+    find_occurances_using_objects(array, key=key)
+
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import argparse
+import random
+import sys
+import numpy as np
+
+from mpi4py import MPI
+from search.core import get_number_of_occurrences, ARRAY_SIZE
+from utils import mpi_init, generate_random_ints, timer, DATA_TYPE
+
+
+
+@timer
+def find_occurrences_using_buffers(array, key, data_size):
+    """
+    Find how many times the key exists on the array using
+    buffers
+    :param array: They array with the elements
+    :param key: the element that we are looking for
+    :return:
+    """
+
+    comm, rank, comm_size = mpi_init()
+
+    #  We are broadcasting the key to all processes
+    key = bytearray([key])
+    comm.Bcast(key, root=0)
+
+    key = int.from_bytes(key, byteorder=sys.byteorder)
+
+    recvbuff = np.empty(data_size//comm_size, dtype=DATA_TYPE)
+    comm.Scatter(array, recvbuff, root=0)
+
+    result = get_number_of_occurrences(recvbuff, key)
+
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+
+    return total
+
+@timer
+def find_occurances_using_objects(array, key, data_size):
+
+    comm, rank, comm_size = mpi_init()
+
+    key = comm.bcast(key)
+    local_array = comm.scatter(array, root=0)
+
+    result = get_number_of_occurrences(local_array, key)
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+    return total
+
+
+def main():
+    _, rank, comm_size = mpi_init()
+    array = None
+    key = 0
+
+    parser = argparse.ArgumentParser(description="run merge sort algorithm")
+    parser.add_argument("--data_size", type=int, help="Size of the input")
+    args = parser.parse_args()
+    data_size = args.data_size
+
+    if rank == 0:
+        array = generate_random_ints(data_size, comm_size)
+        key = random.randint(1, 256)
+
+    find_occurrences_using_buffers(array, data_size=data_size, key=key)
+    find_occurances_using_objects(array, data_size=data_size, key=key)
+
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import random
+
+from mpi4py import MPI
+import numpy as np
+import sys
+
+from utils import mpi_init, generate_random_ints, timer, DATA_TYPE
+from search.core import find_element
+
+
+@timer
+def find_element_using_buffers(array, key, data_size):
+
+    comm, rank, comm_size = mpi_init()
+
+    #  We are broadcasting the key to all processes
+    key = bytearray([key])
+    comm.Bcast(key, root=0)
+
+    key = int.from_bytes(key, byteorder=sys.byteorder)
+
+    recvbuff = np.empty(data_size//comm_size, dtype=DATA_TYPE)
+    comm.Scatter(array, recvbuff, root=0)
+
+    result = find_element(recvbuff, key)
+
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+
+    return total
+
+
+@timer
+def find_element_using_objects(array, key, data_size):
+
+    comm, rank, comm_size = mpi_init()
+
+    key = comm.bcast(key)
+    local_array = comm.scatter(array, root=0)
+
+    result = find_element(local_array, key)
+
+    total = comm.reduce(result, op=MPI.SUM, root=0)
+
+    return total
+
+
+def main():
+    parser = argparse.ArgumentParser(description="run merge sort algorithm")
+    parser.add_argument("--data_size", type=int, help="Size of the input")
+    args = parser.parse_args()
+    data_size = args.data_size
+
+    comm, rank, comm_size = mpi_init()
+    array = None
+    key = 0
+
+    if rank == 0:
+        array = generate_random_ints(data_size, comm_size)
+        key = random.randint(1, 256)
+
+    find_element_using_objects(array, key=key)
+    find_element_using_buffers(array, key=key)
+
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import pandas
+import argparse
+import matplotlib
+import matplotlib.pyplot as plt
+
+matplotlib.use('TkAgg')
+
+
+def generate_plots(file):
+    data = pandas.read_csv(file, header=None, names=('algorithm', 'processors', 'time', 'data_size'))
+    data['data_size'] = data['data_size'].apply(str)
+
+    data['data_size'] = data['data_size'].apply(str)
+    data = data.groupby(['algorithm'])
+    for i, group in data:
+
+        algorithm = group.iloc[0, 0]
+        group.drop('algorithm', inplace=True, axis=1)
+
+        group = group.pivot(index='processors', columns='data_size', values='time')
+        print(group.columns)
+        print(group)
+
+        group.plot(legend=True, title=algorithm, label='Data size')
+
+    plt.show()
+
+
+def main():
+
+    parser = argparse.ArgumentParser(description="create plots")
+    parser.add_argument('--file_path', type=str, default="results.csv",
+                        help="given a csv, generate a plot")
+
+    args = parser.parse_args()
+    generate_plots(args.file_path)
+
+
+if __name__ == '__main__':
+    main()
+
+-. . -..- - / . -. - .-. -.--
+import pandas
+import argparse
+import matplotlib
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+matplotlib.use('TkAgg')
+
+
+def generate_plots(file):
+    data = pandas.read_csv(file, header=None, names=('algorithm', 'processors', 'time', 'data_size'))
+    data['data_size'] = data['data_size'].apply("{:,}".format)
+    data = data.groupby(['algorithm'])
+    colormap = cm.get_cmap('Dark2')
+
+    for i, group in data:
+        algorithm = group.iloc[0, 0].replace("_", " ")
+        group.drop('algorithm', inplace=True, axis=1)
+
+        group = group.pivot(index='processors', columns='data_size', values='time')
+
+        group.plot(legend=True, title=algorithm, label='Data size', ylabel='time(s)',
+                   sort_columns=True, colormap=colormap)
+
+    plt.legend(loc='best')
+    plt.show()
+
+
+def main():
+
+    parser = argparse.ArgumentParser(description="create plots")
+    parser.add_argument('--file_path', type=str, default="results.csv",
+                        help="given a csv, generate a plot")
+
+    args = parser.parse_args()
+    generate_plots(args.file_path)
+
+
+if __name__ == '__main__':
+    main()

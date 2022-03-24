@@ -1,0 +1,108 @@
+<application>
+  <component name="VimHistorySettings">
+    <history>
+      <history-search />
+      <history-cmd>
+        <entry encoding="base64">dw==</entry>
+      </history-cmd>
+      <history-expr />
+      <history-input />
+    </history>
+  </component>
+  <component name="VimMarksSettings">
+    <globalmarks />
+    <filemarks>
+      <file name="$USER_HOME$/PycharmProjects/thesis/src/Makefile" timestamp="1628020570932">
+        <mark key="[" line="7" column="75" />
+        <mark key="]" line="7" column="75" />
+        <mark key="." line="7" column="75" />
+        <mark key="^" line="7" column="76" />
+      </file>
+      <file name="/Python Console" timestamp="1627850031070">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="/a.dummy" timestamp="1628032065935">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/PycharmProjects/thesis/src/array_multiplication/array_with_element_multiplication.py" timestamp="1627853610641">
+        <mark key="[" line="5" column="0" />
+        <mark key="]" line="5" column="0" />
+        <mark key="." line="5" column="0" />
+      </file>
+      <file name="$USER_HOME$/PycharmProjects/thesis/src/main.py" timestamp="1628627643120">
+        <mark key="'" line="60" column="0" />
+        <mark key="[" line="29" column="23" />
+        <mark key="]" line="29" column="30" />
+        <mark key="." line="29" column="29" />
+        <mark key="^" line="29" column="30" />
+      </file>
+      <file name="$USER_HOME$/PycharmProjects/thesis/src/sort/merge_sort_mpi.py" timestamp="1628627923876">
+        <mark key="'" line="23" column="61" />
+        <mark key="[" line="64" column="0" />
+        <mark key="]" line="64" column="0" />
+        <mark key="^" line="56" column="26" />
+        <mark key="." line="64" column="0" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="26" column="0" filename="$USER_HOME$/PycharmProjects/thesis/src/sort/merge_sort_mpi.py" />
+      <jump line="71" column="0" filename="$USER_HOME$/PycharmProjects/thesis/src/sort/merge_sort_mpi.py" />
+      <jump line="23" column="61" filename="$USER_HOME$/PycharmProjects/thesis/src/sort/merge_sort_mpi.py" />
+      <jump line="18" column="0" filename="$USER_HOME$/PycharmProjects/thesis/src/main.py" />
+      <jump line="23" column="40" filename="$USER_HOME$/PycharmProjects/thesis/src/main.py" />
+      <jump line="52" column="0" filename="$USER_HOME$/PycharmProjects/thesis/src/main.py" />
+    </jumps>
+  </component>
+  <component name="VimRegisterSettings">
+    <registers>
+      <register name="&quot;" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="-" type="4">
+        <text encoding="base64">bA==</text>
+      </register>
+      <register name="." type="4">
+        <text encoding="base64">Y29tbWFuZA==</text>
+      </register>
+      <register name="0" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="1" type="2">
+        <text encoding="base64">Cg==</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">ICAgICMgICAgIHByaW50KGYnRGF0YSB3YXMgc29ydGVkIHdpdGggb2xkIGZhc2hpb25lZCB3YXkgaW4ge3RpbWUudGltZSgpIC0gdDF9JykK</text>
+      </register>
+      <register name="3" type="2">
+        <text encoding="base64">ICAgICMgICAgIG5wLnNvcnQoZGF0YSwga2luZD0nbWVyZ2Vzb3J0JykK</text>
+      </register>
+      <register name="4" type="2">
+        <text encoding="base64">ICAgICMgICAgIHQxID0gdGltZS50aW1lKCkK</text>
+      </register>
+      <register name="5" type="2">
+        <text encoding="base64">ICAgICMgaWYgcmFuayA9PSAwOgo=</text>
+      </register>
+      <register name="6" type="2">
+        <text encoding="base64">ICAgICMgc29ydF91c2luZ19idWZmZXJzX2QoZGF0YSwgcmVjdmJ1ZmYsIGFycmF5X3NpemUpCg==</text>
+      </register>
+      <register name="7" type="2">
+        <text encoding="base64">ICAgICAgICBwcmludChjb21tYW5kKQo=</text>
+      </register>
+      <register name="8" type="2">
+        <text encoding="base64">ICAgICAgICAjIHByaW50KGYne0NNRG9ybWF0KGksZmlsZSl9JykK</text>
+      </register>
+      <register name="9" type="4">
+        <text encoding="base64">LCBuPXtpfQ==</text>
+      </register>
+      <register name=":" type="4">
+        <text encoding="base64">dw==</text>
+      </register>
+    </registers>
+  </component>
+  <component name="VimSearchSettings">
+    <search>
+      <last-dir encoding="base64">MQ==</last-dir>
+      <show-last encoding="base64">ZmFsc2U=</show-last>
+    </search>
+  </component>
+</application>
